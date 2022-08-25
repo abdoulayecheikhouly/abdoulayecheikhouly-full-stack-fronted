@@ -31,7 +31,6 @@ export class ProduitsComponent implements OnInit {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
       this.produitService.supprimerProduit(p.idProduit).subscribe(() => {
-        console.log("produit supprimé");
         this.chargerProduits();
 
       });

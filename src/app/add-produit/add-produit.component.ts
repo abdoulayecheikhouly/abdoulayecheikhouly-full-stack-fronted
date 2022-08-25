@@ -23,15 +23,24 @@ export class AddProduitComponent implements OnInit {
 
   ngOnInit(): void {
    // this.categories = this.produitService.listeCategories();
+    this.produitService.listeCategories().
+    subscribe(cats => {this.categories = cats;
+      console.log(cats);
+    });
   }
   addProduit(){
-    this.produitService.ajouterProduit(this.newProduit)
-      .subscribe(prod => {
-        console.log(prod);
-        this.router.navigate(['produits']);
-      });
 
-    this.message="Produit  " + this.newProduit.nomProduit+ " ajouté avec succés"
+      this.newProduit.categorie = this.categories.find(cat => cat.idCat == this.newIdCat)!;
+      this.produitService.ajouterProduit(this.newProduit)
+        .subscribe(prod => {
+          console.log(prod);
+          this.router.navigate(['produits']);
+
+          this.message="Produit  " + this.newProduit.nomProduit+ " ajouté avec succés"
+        });
+
+
+
 
   }
 }

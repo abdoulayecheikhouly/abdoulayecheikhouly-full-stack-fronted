@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class ProduitService {
   apiURL: string = 'http://localhost:8080/produits/api';
+  //del: string='http://localhost:8080/produits/api/del'
   produits : Produit[]; //un tableau de produits
   //categories : Categorie[];
 
@@ -44,8 +45,8 @@ export class ProduitService {
 
   supprimerProduit(id : number) {
     const url = `${this.apiURL}/${id}`;
-  //  return this.http.delete(url, httpOptions);
-    return this.http.delete(`${this.apiURL}/${id}`,httpOptions);
+     return this.http.delete(url, httpOptions);
+
   }
 
 
