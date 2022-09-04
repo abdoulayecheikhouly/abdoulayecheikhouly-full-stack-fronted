@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Categorie } from '../model/categorie.model';
 import {Produit} from "../model/produit.model";
+import {CategorieWrapper} from "../model/categorieWrapper.model";
 import { ProduitService } from '../services/produit.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class AddProduitComponent implements OnInit {
   ngOnInit(): void {
    // this.categories = this.produitService.listeCategories();
     this.produitService.listeCategories().
-    subscribe(cats => {this.categories = cats;
+    subscribe(cats => {this.categories = cats._embedded.categories;
       console.log(cats);
     });
   }
